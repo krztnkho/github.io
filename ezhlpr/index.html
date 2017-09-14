@@ -1,0 +1,142 @@
+<html>
+<head>
+	<title>EazyHelpr</title>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<style type="text/css">
+	html, body{
+		padding:0;margin:0;
+		font-family:Arial, sans-serif;
+		background:#333;
+	}
+	a,a:active,a:visited{text-decoration: none;
+		color:#fff;
+	}
+	a:hover, a.active{color:#333;
+	}
+	ul{list-style: none; margin:15px; padding:0;}
+	#page{
+		/*position: absolute;
+		z-index: 50;
+		left:0;right:0;*/
+		margin:auto;
+		width:400px;
+		min-height:1000px;
+		overflow:hidden;
+		background-position: 50% 114px;
+		background-repeat: no-repeat;
+		background-image: url(01-homescreen.png);
+		background-size: 400px auto;
+		-webkit-background-size: 400px auto;
+		-moz-background-size: 400px auto;
+		-o-background-size: 400px auto;
+	}
+	#nav{
+		-webkit-transition: all 0.3s ease-out;
+		-moz-transition: all 0.3s ease-out;
+		-o-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+		-webkit-box-shadow: 2px 3px 10px rgba(0, 0, 0, .3);
+		-moz-box-shadow: 2px 3px 10px rgba(0, 0, 0, .3);
+		box-shadow: 2px 3px 10px rgba(0, 0, 0, .3);
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
+	}
+	#nav{
+		position: fixed;
+		overflow: hidden;
+		z-index: 100;
+		bottom:15px;
+		left:20px;
+		color:#fff;
+		background-color: #47c7e8;
+		width:40px;
+		height: 40px;
+		cursor: pointer;
+	}
+	#nav ul{display:none;overflow:hidden;}
+	.nav-icon{text-align: center;line-height: 40px;}
+	#nav.active{
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		width:190px;
+		height:inherit;
+		height: 250px;
+		/*overflow-y: auto;*/
+	}
+	#nav.active ul{display:blockX; /*height:auto;*/}
+	#nav.active .nav-icon{
+		-webkit-transition: all 0.5s ease-out;
+		-moz-transition: all 0.5s ease-out;
+		-o-transition: all 0.5s ease-out;
+		transition: all 0.5s ease-out;
+		-webkit-transform: rotate(45deg) scale(.8);
+		-moz-transform: rotate(405deg) scale(.8);
+		-o-transform: rotate(405deg) scale(.8);
+		-ms-transform: rotate(405deg) scale(.8);
+		transform: rotate(405deg) scale(.8);
+		position:absolute;
+		z-index: 1;
+		top:0px; right:10px;
+	}
+	#nav a{
+		display:block;
+		padding:3px 10px;
+		font-size: 12px;
+	}
+	.bg-wrap{
+		min-width: 100vh;
+		min-height:100vh;
+		position: relative;
+	    background-position: 50% 0px;
+	    background-repeat: no-repeat;
+	    background-size: 723px auto;
+	    -webkit-background-size: 723px auto;
+	    -moz-background-size: 723px auto;
+	    -o-background-size: 723px auto;
+		background-image: url(iphone.png);
+	}
+</style>
+<body>
+	<div class="bg-wrap">
+		<div id="page">
+			
+		</div>
+	</div>
+	<div id="nav">
+		<div class="nav-icon"><i class="fa fa-plus"></i></div>
+		<ul>
+			<li><a class="active" href="#" data-img="01-homescreen.png">Homescreen</a></li>
+			<li><a href="#" data-img="02-login.png">Login</a></li>
+		</ul>
+	</div>
+<script
+  src="http://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+  		$(document).ready(function(){
+  			
+			$('#nav .nav-icon').on('click',function() {
+			  	$('#nav').toggleClass('active');
+			   	$('#nav ul').slideToggle();
+			})
+			$('#page').on('click',function() {
+			  	//$('#nav').removeClass('active');
+			})
+			$('#nav a').on('click',function(e){
+				e.preventDefault();
+				$(this).addClass('active').parent().siblings().find('a').removeClass('active');
+				var img = $(this).data('img');
+				console.log(img);
+				$('body').animate({scrollTop:0}, 300, 'swing');
+				$("#page").css({'background-image': 'url('+img+')'});
+			})
+  		})
+
+  </script>
+</body>
+</html>
